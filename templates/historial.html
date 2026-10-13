@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial · API Dashboard</title>
+
+    <!-- Fuentes e Íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/historial.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a class="nav-brand" href="/"><i class="fa-solid fa-layer-group"></i> API Dashboard</a>
+        <ul class="nav-links">
+            <li><a href="/" class="{{ 'active' if request.path == '/' }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="/marketplaces" class="{{ 'active' if request.path == '/marketplaces' }}"><i class="fa-solid fa-store"></i> Marketplaces</a></li>
+            <li><a href="/cuentas" class="{{ 'active' if request.path == '/cuentas' }}"><i class="fa-solid fa-users"></i> Cuentas</a></li>
+            <li><a href="/autenticaciones" class="{{ 'active' if request.path == '/autenticaciones' }}"><i class="fa-solid fa-key"></i> Autenticaciones</a></li>
+            <li><a href="/endpoints" class="{{ 'active' if request.path == '/endpoints' }}"><i class="fa-solid fa-network-wired"></i> Endpoints</a></li>
+            <li><a href="/historial" class="{{ 'active' if request.path == '/historial' }}"><i class="fa-solid fa-clock-rotate-left"></i> Historial</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+<div class="historial-wrapper">
+  <!-- Cabecera -->
+  <div class="page-header">
+    <div>
+      <h1>Historial de Ejecuciones</h1>
+      <p>Monitoreo en tiempo real de llamadas HTTP, códigos de estado y respuestas.</p>
+    </div>
+    <div class="html-style-1">
+      <button type="button" class="btn btn-secondary btn-sm" id="hist-refresh">🔄 Actualizar</button>
+      <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('¿Vaciar historial?')) alert('Historial limpiado');">🗑️ Limpiar Logs</button>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filter-card">
+    <input type="search" id="hist-search" placeholder="Buscar por endpoint o URL (ej. /api/v1/orders)..." />
+    <select id="hist-cuenta">
+      <option value="">Todas las cuentas</option>
+    </select>
+    <select id="hist-method">
+      <option value="">Todos los métodos</option>
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="PATCH">PATCH</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+    <span id="hist-count" class="html-style-2">0 registros</span>
+  </div>
+
+  <!-- Tabla -->
+  <div class="table-card">
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha / Hora</th>
+            <th>Cuenta</th>
+            <th>Método</th>
+            <th>Endpoint</th>
+            <th>Estado</th>
+            <th class="html-style-3">Acción</th>
+          </tr>
+        </thead>
+        <tbody id="hist-list">
+          <tr>
+            <td colspan="6" class="html-style-4">Cargando historial…</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para inspeccionar payload -->
+<div class="modal-overlay" id="detail-modal">
+  <div class="modal-box">
+    <h3 class="html-style-5" id="modal-title">Detalle de la petición</h3>
+    <p class="html-style-6" id="modal-sub"></p>
+    
+    <label class="html-style-7">Respuesta / Payload JSON:</label>
+    <pre id="modal-json"><code>{}</code></pre>
+    
+    <div class="html-style-8">
+      <button class="btn btn-secondary" id="modal-close">Cerrar</button>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <script src="{{ url_for('static', filename='JS/historial.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='modulos.js') }}" defer></script>
+</body>
+</html>

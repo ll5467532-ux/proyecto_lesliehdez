@@ -1,0 +1,153 @@
+/* ==========================================
+   VARIABLES Y ESTILOS GENERALES
+   ========================================== */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --input-focus: #3b82f6;
+    --placeholder-color: #94a3b8;
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 2rem;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   ENCABEZADO DE PÁGINA
+   ========================================== */
+.page-head {
+    margin-bottom: 1.5rem;
+}
+
+.page-head h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* ==========================================
+   CONTENEDOR TIPO CARD Y FORMULARIO GRID
+   ========================================== */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* Grilla adaptable del formulario */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+/* Etiquetas e Inputs */
+label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+    font-weight: 600;
+    gap: 0.375rem;
+    color: var(--text-color);
+}
+
+input[type="datetime-local"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text-color);
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Elemento que abarca todo el ancho del grid */
+.span-all {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================
+   BOTONES Y MENSAJES
+   ========================================== */
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-sm.primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.btn-sm.primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.form-msg {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+/* ==========================================
+   LISTA DE AUTENTICACIONES
+   ========================================== */
+#auth-list {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.empty {
+    color: var(--placeholder-color);
+    font-style: italic;
+    text-align: center;
+}

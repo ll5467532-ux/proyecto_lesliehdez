@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplaces · API Dashboard</title>
+
+    <!-- Fuentes e Íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/marketplaces.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a class="nav-brand" href="/"><i class="fa-solid fa-layer-group"></i> API Dashboard</a>
+        <ul class="nav-links">
+            <li><a href="/" class="{{ 'active' if request.path == '/' }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="/marketplaces" class="{{ 'active' if request.path == '/marketplaces' }}"><i class="fa-solid fa-store"></i> Marketplaces</a></li>
+            <li><a href="/cuentas" class="{{ 'active' if request.path == '/cuentas' }}"><i class="fa-solid fa-users"></i> Cuentas</a></li>
+            <li><a href="/autenticaciones" class="{{ 'active' if request.path == '/autenticaciones' }}"><i class="fa-solid fa-key"></i> Autenticaciones</a></li>
+            <li><a href="/endpoints" class="{{ 'active' if request.path == '/endpoints' }}"><i class="fa-solid fa-network-wired"></i> Endpoints</a></li>
+            <li><a href="/historial" class="{{ 'active' if request.path == '/historial' }}"><i class="fa-solid fa-clock-rotate-left"></i> Historial</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+<div class="marketplaces-wrapper">
+  <!-- Cabecera con Botón Funcional -->
+  <div class="page-header">
+    <div>
+      <h1>Marketplaces</h1>
+      <p>Plataformas soportadas, conectores de e-Commerce y configuración de canales.</p>
+    </div>
+    <button type="button" class="btn btn-primary" id="btn-open-modal">
+      ➕ Nuevo Marketplace
+    </button>
+  </div>
+
+  <!-- Métricas -->
+  <div class="mp-stats">
+    <div class="stat-card">
+      <div class="label">Total Plataformas</div>
+      <div class="val" id="stat-total">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Endpoints registrados</div>
+      <div class="val" id="stat-activos" class="html-style-1">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Estado del catálogo</div>
+      <div class="val html-style-2">🟢 Operativo</div>
+    </div>
+  </div>
+
+  <!-- Barra de Filtros -->
+  <div class="toolbar-panel">
+    <input type="search" id="mp-search" placeholder="Buscar marketplace (ej. Shopify, Amazon)..." />
+    <button class="btn btn-secondary" id="mp-btn-reset">Limpiar Filtros</button>
+  </div>
+
+  <!-- Contenedor Principal de Tarjetas -->
+  <div id="marketplaces-container">
+    <p class="html-style-3">
+      Cargando marketplaces...
+    </p>
+  </div>
+</div>
+
+<!-- Modal para Crear Nuevo Marketplace -->
+<div class="modal-overlay" id="add-mp-modal">
+  <div class="modal-box">
+    <h3 class="html-style-4">Agregar Nuevo Marketplace</h3>
+    <p class="html-style-5">Registra un nuevo canal o conector de venta.</p>
+
+    <form id="add-mp-form">
+      <div class="form-group">
+        <label for="new-mp-nombre">Nombre de la Plataforma *</label>
+        <input type="text" id="new-mp-nombre" placeholder="Ej. Walmart, Magento, Mercado Libre" required />
+      </div>
+
+      <div class="form-group">
+        <label for="new-mp-tipo">Autenticación habitual</label>
+        <select id="new-mp-tipo">
+          <option value="otro">Por configurar</option>
+          <option value="api_key">API Key</option>
+          <option value="bearer">Bearer Token</option>
+          <option value="oauth2">OAuth 2.0</option>
+          <option value="basic">Basic Auth</option>
+        </select>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-close-modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Marketplace</button>
+      </div>
+    </form>
+  </div>
+</div>
+    </main>
+
+    <script src="{{ url_for('static', filename='JS/marketplaces.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='modulos.js') }}" defer></script>
+</body>
+</html>

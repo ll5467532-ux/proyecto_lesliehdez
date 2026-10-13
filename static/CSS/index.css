@@ -1,0 +1,95 @@
+/* Estilos específicos de index.html */
+
+.dashboard-hero {
+    margin-bottom: 2.5rem;
+  }
+  
+  .dashboard-hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5r;
+    
+  }
+
+  .dashboard-hero p {
+    color: #64748b;
+    font-size: 1.05rem;
+  }
+
+  /* Grid de Tarjetas */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .dash-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dash-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -5px rgba(37, 99, 235, 0.12);
+    border-color: #3b82f6;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Colores por sección */
+  .card-marketplaces .card-icon { background: #eff6ff; color: #2563eb; }
+  .card-cuentas .card-icon { background: #f0fdf4; color: #16a34a; }
+  .card-autenticaciones .card-icon { background: #fff7ed; color: #ea580c; }
+  .card-endpoints .card-icon { background: #f3e8ff; color: #9333ea; }
+  .card-historial .card-icon { background: #f1f5f9; color: #475569; }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-desc {
+    color: #64748b;
+    font-size: 0.925rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-action {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dash-card:hover .card-action {
+    text-decoration: underline;
+  }

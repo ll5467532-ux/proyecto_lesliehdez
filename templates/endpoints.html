@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Explorer · API Dashboard</title>
+
+    <!-- Fuentes e Íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/endpoints.css') }}">
+</head>
+<body data-page="endpoints">
+
+    <nav class="navbar">
+        <a class="nav-brand" href="/"><i class="fa-solid fa-layer-group"></i> API Dashboard</a>
+        <ul class="nav-links">
+            <li><a href="/" class="{{ 'active' if request.path == '/' }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="/marketplaces" class="{{ 'active' if request.path == '/marketplaces' }}"><i class="fa-solid fa-store"></i> Marketplaces</a></li>
+            <li><a href="/cuentas" class="{{ 'active' if request.path == '/cuentas' }}"><i class="fa-solid fa-users"></i> Cuentas</a></li>
+            <li><a href="/autenticaciones" class="{{ 'active' if request.path == '/autenticaciones' }}"><i class="fa-solid fa-key"></i> Autenticaciones</a></li>
+            <li><a href="/endpoints" class="{{ 'active' if request.path == '/endpoints' }}"><i class="fa-solid fa-network-wired"></i> Endpoints</a></li>
+            <li><a href="/historial" class="{{ 'active' if request.path == '/historial' }}"><i class="fa-solid fa-clock-rotate-left"></i> Historial</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+<div class="page-head">
+  <h1><i class="fa-solid fa-network-wired"></i> API Explorer</h1>
+  <p class="subtitle">Explora y busca endpoints disponibles por marketplace y método.</p>
+</div>
+
+<div class="card">
+  <div class="html-style-1">
+    <p class="section-label">Marketplace</p>
+    <div class="mkt-pills" id="mkt-pills">
+      <div class="mkt-pill active" data-mkt="">Todos</div>
+    </div>
+  </div>
+
+  <div class="html-style-2">
+    <p class="section-label">Método</p>
+    <div class="mkt-pills" id="method-pills">
+      <div class="mkt-pill active" data-method="">Todos</div>
+      <div class="mkt-pill" data-method="GET">GET</div>
+      <div class="mkt-pill" data-method="POST">POST</div>
+      <div class="mkt-pill" data-method="PUT">PUT</div>
+      <div class="mkt-pill" data-method="PATCH">PATCH</div>
+      <div class="mkt-pill" data-method="DELETE">DELETE</div>
+    </div>
+  </div>
+
+  <div class="search-row html-style-3">
+    <input type="text" id="q" placeholder="Buscar por endpoint, descripción o parámetros…" autocomplete="off" />
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-sm primary" id="btn-buscar" type="button"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+    <button class="btn-sm" id="btn-limpiar" type="button">Limpiar filtros</button>
+  </div>
+</div>
+
+<div id="results-info" class="html-style-4"></div>
+<div id="cards"></div>
+    </main>
+
+    <script src="{{ url_for('static', filename='JS/endpoints.js') }}" defer></script>
+</body>
+</html>

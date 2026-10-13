@@ -1,0 +1,14 @@
+/* Estilos específicos de cuentas.html */
+
+.cu-table { width:100%; border-collapse:collapse; font-size:14px; }
+    .cu-table th, .cu-table td { text-align:left; padding:10px 12px; border-bottom:1px solid rgba(128,128,128,.2); }
+    .cu-table th { font-size:12px; text-transform:uppercase; letter-spacing:.04em; opacity:.7; }
+    .cu-url { font-family:'JetBrains Mono',monospace; font-size:12px; word-break:break-all; }
+    .cu-badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:500; }
+    .cu-on  { background:rgba(46,157,91,.15); color:#2e9d5b; }
+    .cu-off { background:rgba(128,128,128,.18); opacity:.8; }
+    .cu-actions { display:flex; gap:6px; flex-wrap:wrap; }
+    .cu-danger { color:#d64545; }
+    .cu-wrap { overflow-x:auto; }
+    .form-msg.ok  { color:#2e9d5b; }
+    .form-msg.err { color:#d64545; }

@@ -1,0 +1,134 @@
+/* Estilos específicos de historial.html */
+
+.historial-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Filtros con espaciado amplio */
+  .filter-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+
+  .filter-card input,
+  .filter-card select {
+    padding: 0.65rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  .filter-card input[type="search"] {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  /* Mejoras en la Tabla para evitar filas apretadas */
+  .table-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  td {
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    font-size: 0.925rem;
+    vertical-align: middle;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: #f8fafc;
+  }
+
+  .status-badge {
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .status-200, .status-201 { background: #dcfce7; color: #15803d; }
+  .status-400, .status-401, .status-404 { background: #fef3c7; color: #92400e; }
+  .status-500 { background: #fee2e2; color: #991b1b; }
+
+  /* Modal de detalles de respuesta */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(2px);
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: #ffffff;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 650px;
+    padding: 2rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  .modal-box pre {
+    background: #0f172a;
+    color: #38bdf8;
+    padding: 1.25rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    max-height: 280px;
+    margin-top: 0.5rem;
+  }
+
+
+/* Estilos puntuales extraídos del HTML */
+.html-style-1 { display: flex; gap: 0.75rem; }
+.html-style-2 { margin-left: auto; color: #64748b; font-size: 0.875rem; font-weight: 600; }
+.html-style-3 { text-align: right; }
+.html-style-4 { text-align: center; color: #64748b; padding: 2.5rem; }
+.html-style-5 { margin-bottom: 0.5rem; color: #0f172a; font-size: 1.25rem; }
+.html-style-6 { font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem; }
+.html-style-7 { font-size: 0.85rem; font-weight: 600; color: #475569; }
+.html-style-8 { text-align: right; margin-top: 1.5rem; }

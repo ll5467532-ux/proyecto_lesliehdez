@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticaciones · API Dashboard</title>
+
+    <!-- Fuentes e Íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/autenticaciones.css') }}">
+</head>
+<body data-page="autenticaciones">
+
+    <nav class="navbar">
+        <a class="nav-brand" href="/"><i class="fa-solid fa-layer-group"></i> API Dashboard</a>
+        <ul class="nav-links">
+            <li><a href="/" class="{{ 'active' if request.path == '/' }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="/marketplaces" class="{{ 'active' if request.path == '/marketplaces' }}"><i class="fa-solid fa-store"></i> Marketplaces</a></li>
+            <li><a href="/cuentas" class="{{ 'active' if request.path == '/cuentas' }}"><i class="fa-solid fa-users"></i> Cuentas</a></li>
+            <li><a href="/autenticaciones" class="{{ 'active' if request.path == '/autenticaciones' }}"><i class="fa-solid fa-key"></i> Autenticaciones</a></li>
+            <li><a href="/endpoints" class="{{ 'active' if request.path == '/endpoints' }}"><i class="fa-solid fa-network-wired"></i> Endpoints</a></li>
+            <li><a href="/historial" class="{{ 'active' if request.path == '/historial' }}"><i class="fa-solid fa-clock-rotate-left"></i> Historial</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+<div class="page-head">
+    <h1><i class="fa-solid fa-key"></i> Autenticaciones</h1>
+    <p class="subtitle">Gestiona credenciales cifradas para cada cuenta conectada.</p>
+</div>
+
+<form id="form-auth" class="card form-grid">
+    <label for="auth-cuenta">Cuenta
+        <select id="auth-cuenta" required>
+            <option value="">Cargando…</option>
+        </select>
+    </label>
+
+    <label for="auth-tipo">Tipo
+        <select id="auth-tipo" required>
+            <option value="oauth2">OAuth 2.0</option>
+            <option value="api_key">API Key</option>
+            <option value="bearer">Bearer Token</option>
+            <option value="basic">Basic Auth</option>
+            <option value="otro">Otro</option>
+        </select>
+    </label>
+
+    <label for="auth-expira">Fecha de expiración (opcional)
+        <input type="datetime-local" id="auth-expira">
+    </label>
+
+    <label for="auth-cred" class="span-all">Credencial / Token
+        <textarea id="auth-cred" rows="3" maxlength="5000" placeholder="Pega aquí el token o la llave (se guarda cifrada de forma segura)" required></textarea>
+    </label>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-sm primary" id="btn-guardar"><i class="fa-solid fa-floppy-disk"></i> Guardar credencial</button>
+        <span class="form-msg" id="auth-msg" role="alert"></span>
+    </div>
+</form>
+
+<div id="auth-list">
+    <p class="empty">Cargando…</p>
+</div>
+    </main>
+
+    <script src="{{ url_for('static', filename='JS/autenticaciones.js') }}" defer></script>
+</body>
+</html>
