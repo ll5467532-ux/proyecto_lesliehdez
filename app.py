@@ -10,6 +10,7 @@ from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS
 import mysql.connector
 from mysql.connector import Error, IntegrityError, pooling
+
 from config import DB_CONFIG
 
 app = Flask(__name__)
